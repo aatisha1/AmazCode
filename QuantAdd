@@ -1,0 +1,30 @@
+package Multiple;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+public class QuanAdd {
+@Test
+public void run() throws InterruptedException {
+	String path = "D:\\bebo's testing\\selenium\\browser driver\\chromedriver.exe";
+	System.setProperty("webdriver.chrome.driver", path);
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://www.amazon.com/");
+	driver.findElement(By.xpath("//a[@id='nav-link-accountList']")).click();
+	driver.findElement(By.xpath("//input[@name='email']")).sendKeys("aatishag8@gmail.com");
+	driver.findElement(By.xpath("//input[@id='continue']")).click();
+	driver.findElement(By.xpath("//input[@id='ap_password']")).sendKeys("Test@123");
+	driver.findElement(By.xpath("//input[@type='submit']")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']")).sendKeys("dell laptop");
+	driver.findElement(By.xpath("//input[@class='nav-input']")).click();
+	driver.findElement(By.xpath("//a[@class='a-link-normal a-text-normal']")).click();
+	Select Qty =new Select(driver.findElement(By.xpath("//select[@autocomplete='off']")));
+	Qty.selectByValue("2");
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
+}
+}
